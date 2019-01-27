@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:community/common/redux/AppState.dart';
 import 'package:community/common/model/UserModel.dart';
-import 'package:community/common/utils/ImageUtils.dart';
+import 'package:community/common/utils/ImageHelper.dart';
 import 'package:community/common/widget/UserCenterDrawer.dart';
 
 class UserCenterDrawerPage extends StatefulWidget {

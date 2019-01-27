@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:community/page/HomePageAll.dart';
 import 'package:community/common/redux/AppState.dart';
-import 'package:community/common/utils/ImageUtils.dart';
+import 'package:community/common/utils/ImageHelper.dart';
 import 'package:community/common/widget/AppBarLeadingAvatar.dart';
 import 'package:community/Global.dart';
 
