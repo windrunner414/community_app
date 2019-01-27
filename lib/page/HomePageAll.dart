@@ -60,7 +60,7 @@ class _HomePageAllState extends State<HomePageAll> with AutomaticKeepAliveClient
             );
           }
 
-          return ArticleListItem(onTap: (){StoreProvider.of<AppState>(context).dispatch(RefreshTheme(StoreProvider.of<AppState>(context).state.theme == 1 ? 0 : 1));}, title: '我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题', publishTime: 123333, coverUrl: 'https://iocaffcdn.phphub.org/uploads/images/201809/10/1/thFfqxfJNe.png?imageView2/2/w/1240/h/0',);
+          return ArticleListItem(onTap: (){StoreProvider.of<AppState>(context).dispatch(RefreshTheme(StoreProvider.of<AppState>(context).state.theme == 2 ? 0 : 2));}, title: '我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题', publishTime: 123333, coverUrl: 'https://iocaffcdn.phphub.org/uploads/images/201809/10/1/thFfqxfJNe.png?imageView2/2/w/1240/h/0',);
         },
       ),
     );
