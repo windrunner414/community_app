@@ -10,6 +10,7 @@ import 'package:community/page/HomePage.dart';
 import 'package:community/page/UserCenterDrawerPage.dart';
 import 'package:community/common/widget/BottomNavBar.dart';
 import 'package:community/Global.dart';
+import 'package:community/common/redux/StorePersist.dart';
 
 void main() {
   run();
@@ -17,14 +18,21 @@ void main() {
 
 void run() async {
   try {
-    runApp(App(Store<AppState>(
+    var persistData = await getStorePersistData();
+    AppState initialState = persistData == null ? AppState.initialState : AppState.fromJson(persistData);
+
+    Store<AppState> store = Store<AppState>(
       appReducer,
-      initialState: await restoreState(),
+      initialState: initialState,
       middleware: [thunkMiddleware],
-    )));
+    );
+    persistStore(store);
+
+    runApp(App(store));
   } catch (e) {
     //TODO: push error log and exit app
     Fluttertoast.instance.showToast(msg: '软件不小心崩溃了~');
+    rethrow;
   }
 }
 
@@ -112,10 +120,10 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     });
 
     return Scaffold(
-      key: Global.mainScaffoldKey,
+      key: mainScaffoldKey,
       body: WillPopScope(
         onWillPop: () {
-          if (Global.mainScaffoldKey.currentState.isDrawerOpen) {
+          if (mainScaffoldKey.currentState.isDrawerOpen) {
             return Future.value(true);
           } else {
             return _beforeQuit();

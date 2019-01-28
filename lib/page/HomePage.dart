@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
           builder: (context, String avatar) {
             return AppBarLeadingAvatar(
               image: getImageProvider(avatar),
-              onTap: () => Global.mainScaffoldKey.currentState.openDrawer(),
+              onTap: () => mainScaffoldKey.currentState.openDrawer(),
             );
           },
         ),

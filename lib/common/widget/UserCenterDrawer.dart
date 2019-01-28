@@ -26,6 +26,7 @@ class UserCenterDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           DrawerHeader(
+            margin: EdgeInsets.zero,
             padding: const EdgeInsetsDirectional.only(top: 35.0, start: 15.0),
             decoration: decoration ?? BoxDecoration(
               color: Theme.of(context).primaryColor,

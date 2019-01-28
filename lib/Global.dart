@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
 
-class Global {
-  static GlobalKey<ScaffoldState> mainScaffoldKey = GlobalKey<ScaffoldState>();
-}
+/// Global keys
+final GlobalKey<ScaffoldState> mainScaffoldKey = GlobalKey<ScaffoldState>();

@@ -1,3 +1,2 @@
-class Model {
-
+abstract class Model {
 }
