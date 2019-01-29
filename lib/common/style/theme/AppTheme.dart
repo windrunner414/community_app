@@ -2,9 +2,20 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final List<AppTheme> themes = [
-    AppTheme(name: '头顶的颜色', themeData: ThemeData(primarySwatch: Colors.green), isNightModeTheme: false),
-    AppTheme(name: '至尊酷炫黑', themeData: ThemeData.dark(), isNightModeTheme: true),
-    AppTheme(name: '最爱的颜色', themeData: ThemeData(primarySwatch: Colors.blue), isNightModeTheme: false),
+    AppTheme(name: '头顶的颜色', themeData: ThemeData(
+      primarySwatch: Colors.green,
+      fontFamily: 'PingFangSC'
+    ), isNightModeTheme: false),
+
+    AppTheme(name: '至尊酷炫黑', themeData: ThemeData(
+      brightness: Brightness.dark,
+      fontFamily: 'PingFangSC'
+    ), isNightModeTheme: true),
+
+    AppTheme(name: '最爱的颜色', themeData: ThemeData(
+      primarySwatch: Colors.blue,
+      fontFamily: 'PingFangSC'
+    ), isNightModeTheme: false),
   ];
 
   final String name;

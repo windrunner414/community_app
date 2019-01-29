@@ -76,6 +76,9 @@ flutter:
     - family: iconfont
       fonts:
         - asset: resource/fonts/iconfont.ttf
+    - family: PingFangSC
+      fonts:
+        - asset: resource/fonts/PingFangSC_Regular.ttf
 
   assets:
   - resource/images/user/defaultAvatar.jpg
