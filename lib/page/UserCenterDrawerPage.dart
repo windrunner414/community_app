@@ -18,6 +18,41 @@ class _UserCenterDrawerPageState extends State<UserCenterDrawerPage> {
     super.initState();
   }
 
+  Widget _listItem({
+    @required Widget icon,
+    @required Widget title,
+    @required VoidCallback onPressed
+  }) {
+    return FlatButton(
+      splashColor: Theme.of(context).splashColor,
+      highlightColor: Theme.of(context).highlightColor,
+      onPressed: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            IconTheme(
+              data: IconThemeData(
+                color: Theme.of(context).textTheme.display1.color,
+                size: 22,
+              ),
+              child: icon,
+            ),
+            const SizedBox(width: 10),
+            DefaultTextStyle(
+              style: TextStyle(
+                color: Theme.of(context).textTheme.body1.color,
+                fontSize: 14,
+              ),
+              child: title,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, UserModel>(
@@ -28,8 +63,9 @@ class _UserCenterDrawerPageState extends State<UserCenterDrawerPage> {
           userName: Text(user.username),
           userInfo: Text('邪王真眼は最高です'),
           child: ListView(
+            padding: EdgeInsets.zero,
             children: <Widget>[
-              ListTile(leading: Icon(Icons.settings), title: Text('我的问答')),
+              _listItem(icon: Icon(Icons.settings), title: Text('我的帖子'), onPressed: () {}),
             ],
           ),
           action: ButtonBar(
