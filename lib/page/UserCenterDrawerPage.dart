@@ -23,32 +23,31 @@ class _UserCenterDrawerPageState extends State<UserCenterDrawerPage> {
     @required Widget title,
     @required VoidCallback onPressed
   }) {
-    return FlatButton(
+    return MaterialButton(
+      onPressed: onPressed,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      padding: const EdgeInsets.only(left: 12),
       splashColor: Theme.of(context).splashColor,
       highlightColor: Theme.of(context).highlightColor,
-      onPressed: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            IconTheme(
-              data: IconThemeData(
-                color: Theme.of(context).textTheme.display1.color,
-                size: 22,
-              ),
-              child: icon,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          IconTheme(
+            data: IconThemeData(
+              color: Theme.of(context).textTheme.display1.color,
+              size: 22,
             ),
-            const SizedBox(width: 10),
-            DefaultTextStyle(
-              style: TextStyle(
-                color: Theme.of(context).textTheme.body1.color,
-                fontSize: 14,
-              ),
-              child: title,
+            child: icon,
+          ),
+          const SizedBox(width: 10),
+          DefaultTextStyle(
+            style: TextStyle(
+              color: Theme.of(context).textTheme.body1.color,
+              fontSize: 14,
             ),
-          ],
-        ),
+            child: title,
+          ),
+        ],
       ),
     );
   }
@@ -65,7 +64,10 @@ class _UserCenterDrawerPageState extends State<UserCenterDrawerPage> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
+              const SizedBox(height: 10),
               _listItem(icon: Icon(Icons.settings), title: Text('我的帖子'), onPressed: () {}),
+              _listItem(icon: Icon(Icons.settings), title: Text('我的消息'), onPressed: () {}),
+              _listItem(icon: Icon(Icons.settings), title: Text('我的收藏'), onPressed: () {}),
             ],
           ),
           action: ButtonBar(
