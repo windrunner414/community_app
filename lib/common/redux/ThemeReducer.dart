@@ -1,7 +1,8 @@
 import 'package:redux/redux.dart';
+import 'package:community/common/style/theme/AppTheme.dart';
 
-final themeReducer = combineReducers<int>([
-  TypedReducer<int, RefreshTheme>(_refresh),
+final themeReducer = combineReducers<ThemeState>([
+  TypedReducer<ThemeState, RefreshTheme>(_refresh),
 ]);
 
 class RefreshTheme {
@@ -10,6 +11,13 @@ class RefreshTheme {
   RefreshTheme(this.theme);
 }
 
-int _refresh(int theme, RefreshTheme action) {
-  return action.theme;
+ThemeState _refresh(ThemeState theme, RefreshTheme action) {
+  theme.current = action.theme;
+  if (AppTheme.themes[action.theme].isNightModeTheme) {
+    theme.nightMode = action.theme;
+  } else {
+    theme.dayMode = action.theme;
+  }
+
+  return theme;
 }

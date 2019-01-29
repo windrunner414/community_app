@@ -46,7 +46,7 @@ class App extends StatelessWidget {
     return StoreProvider(
       store: store,
       child: StoreConnector<AppState, ThemeData>(
-        converter: (store) => AppTheme.getThemeData(store.state.theme),
+        converter: (store) => AppTheme.getThemeData(store.state.theme.current),
         builder: (context, ThemeData theme) {
           return MaterialApp(
             title: '社区',
@@ -114,11 +114,6 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    List<BottomNavBarItem> navButtons = [];
-    _bottomNavItems.forEach((nav) {
-      navButtons.add(nav[0]);
-    });
-
     return Scaffold(
       key: mainScaffoldKey,
       body: WillPopScope(
@@ -155,7 +150,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
             _bottomNavIndex = index;
           });
         },
-        items: navButtons,
+        items: _bottomNavItems.map<BottomNavBarItem>((List nav) => nav[0]).toList(),
       ),
     );
   }

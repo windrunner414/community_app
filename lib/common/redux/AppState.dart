@@ -1,15 +1,16 @@
 import 'package:community/common/redux/ThemeReducer.dart';
 import 'package:community/common/redux/UserReducer.dart';
 import 'package:community/common/model/UserModel.dart';
+import 'package:community/common/style/theme/AppTheme.dart';
 
 class AppState {
-  int theme;
+  ThemeState theme;
   UserModel user;
 
   AppState({this.theme, this.user});
 
   static final AppState initialState = AppState(
-    theme: 0,
+    theme: ThemeState(),
     user: UserModel(
       avatar: 'assets://resource/images/user/defaultAvatar.jpg',
       username: '未登录',
@@ -22,7 +23,7 @@ class AppState {
   };
 
   AppState.fromJson(Map<String, dynamic> json) :
-    theme = json['theme'],
+    theme = ThemeState.fromJson(json['theme']),
     user = UserModel.fromJson(json['user']);
 }
 

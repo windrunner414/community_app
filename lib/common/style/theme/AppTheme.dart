@@ -11,9 +11,31 @@ class AppTheme {
   final ThemeData themeData;
   final bool isNightModeTheme;
 
-  AppTheme({this.name, this.themeData, this.isNightModeTheme});
+  AppTheme({@required this.name, @required this.themeData, @required this.isNightModeTheme});
 
   static ThemeData getThemeData(int id) {
     return themes[id].themeData;
   }
+}
+
+class ThemeState {
+  int current;
+  int dayMode;
+  int nightMode;
+
+  ThemeState() :
+    current = 0, // default theme
+    dayMode = 0, // default day mode theme
+    nightMode = 1; // default night mode theme
+
+  Map<String, dynamic> toJson() => {
+    'current': current,
+    'dayMode': dayMode,
+    'nightMode': nightMode,
+  };
+
+  ThemeState.fromJson(Map<String, dynamic> json) :
+    current = json['current'],
+    dayMode = json['dayMode'],
+    nightMode = json['nightMode'];
 }

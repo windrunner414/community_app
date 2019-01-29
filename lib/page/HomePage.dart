@@ -59,13 +59,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
   Widget build(BuildContext context) {
     super.build(context);
 
-    List<Widget> tabButtons = [];
-    List<Widget> tabPages = [];
-    _tabs.forEach((tab) {
-      tabButtons.add(tab[0]);
-      tabPages.add(tab[1]);
-    });
-
     return Scaffold(
       appBar: AppBar(
         leading: StoreConnector<AppState, String>(
@@ -79,7 +72,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
         ),
         title: TabBar(
           controller: _tabController,
-          tabs: tabButtons,
+          tabs: _tabs.map<Widget>((List<Widget> tab) => tab[0]).toList(),
           isScrollable: true,
           labelPadding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
           indicatorPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -101,7 +94,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
       ),
       body: TabBarView(
         controller: _tabController,
-        children: tabPages,
+        children: _tabs.map<Widget>((List<Widget> tab) => tab[1]).toList(),
       ),
     );
   }

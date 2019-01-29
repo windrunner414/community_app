@@ -12,11 +12,11 @@ class UserCenterDrawerPage extends StatefulWidget {
   _UserCenterDrawerPageState createState() => _UserCenterDrawerPageState();
 }
 
-class _UserCenterDrawerPageState extends State<UserCenterDrawerPage> with AutomaticKeepAliveClientMixin {
+class _UserCenterDrawerPageState extends State<UserCenterDrawerPage> {
   @override
-  get wantKeepAlive => true;
-
-  int lastSwitchedTheme = -1;
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,31 +41,16 @@ class _UserCenterDrawerPageState extends State<UserCenterDrawerPage> with Automa
                   
                 },
               ),
-              StoreConnector<AppState, int>(
+              StoreConnector<AppState, ThemeState>(
                 converter: (store) => store.state.theme,
-                builder: (context, int theme) {
-                  bool isNightMode = AppTheme.themes[theme].isNightModeTheme;
+                builder: (context, ThemeState theme) {
+                  bool isNightMode = theme.current == theme.nightMode;
 
                   return IconButton(
                     icon: isNightMode ? Icon(Icons.lightbulb_outline) : Icon(Icons.highlight),
                     onPressed: () {
-                      bool switchToNightMode = !isNightMode;
-                      int switchTo = 0;
-
-                      if (lastSwitchedTheme > -1
-                          && AppTheme.themes[lastSwitchedTheme].isNightModeTheme == switchToNightMode) {
-                        switchTo = lastSwitchedTheme;
-                      } else {
-                        for (int i = 0; i < AppTheme.themes.length; ++i) {
-                          if (AppTheme.themes[i].isNightModeTheme == switchToNightMode) {
-                            switchTo = i;
-                            break;
-                          }
-                        }
-                      }
-
-                      StoreProvider.of<AppState>(context).dispatch(RefreshTheme(switchTo));
-                      lastSwitchedTheme = theme;
+                      StoreProvider.of<AppState>(context)
+                        .dispatch(RefreshTheme(isNightMode ? theme.dayMode : theme.nightMode));
                     },
                   );
                 },
